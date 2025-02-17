@@ -12,25 +12,25 @@ public interface Stack<E>
     */
    public E pop();
    // pre: stack no está vacío
-   // post: el último elemento pusheado se elimina del stack y se regresa 
+   // post: el último elemento pusheado se elimina del stack y se devuelve
    
    /**
     * @return
     */
    public E peek();
    // pre: stack no está vacío
-   // post: se regresa el último valor agregado
+   // post: se devuelve el último valor agregado
    
    /**
     * @return
     */
    public boolean isEmpty();
-   // post: regres True si el stack está vacío
+   // post: devuelve True si el stack está vacío
    
    /**
     * @return
     */
    public int size();
-   // post: returns el número de elementos en el stack
+   // post: devuelve el número de elementos en el stack
 
 }
