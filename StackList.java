@@ -1,3 +1,3 @@
-public class StackList extends abstractStack {
+public class StackList<E> extends abstractStack<E> {
     
 }
