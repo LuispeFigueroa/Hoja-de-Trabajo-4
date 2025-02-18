@@ -19,6 +19,7 @@ public class StackVector<E> extends abstractStack<E> {
     @Override
     public void push(E elemento) {
         this.stack.add(elemento);
+        this.count++;
     }
 
     // Metodo para eliminar y devolver el último elemento agregado
@@ -27,6 +28,7 @@ public class StackVector<E> extends abstractStack<E> {
         if (this.isEmpty()) {
             throw new IllegalStateException("El stack esta vacío");
         }
+        this.count--;
         return this.stack.remove(this.stack.size() - 1);
     }
 
