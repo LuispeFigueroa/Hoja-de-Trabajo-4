@@ -14,4 +14,12 @@ public class DoublyNode<E> extends abstractNode<E> {
         this.anterior = null;
         this.siguiente = null;
     }
+
+    public Node<E> getAnterior() {
+        return this.anterior;
+    }
+
+    public void setAnterior(Node<E> nodo) {
+        this.anterior = nodo;
+    }
 }

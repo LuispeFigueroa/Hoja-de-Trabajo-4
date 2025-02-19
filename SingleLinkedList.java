@@ -7,8 +7,8 @@ public class SingleLinkedList<E> extends abstractList<E> {
 
     @Override
     public void add(E valor) {
-        Node<E> newNode = new SinglyNode<>(valor);
-        newNode.setSiguiente(this.head);
-        this.head = newNode;
+        Node<E> nuevoNodo = new SinglyNode<>(valor);
+        nuevoNodo.setSiguiente(this.head);
+        this.head = nuevoNodo;
     }
 }
