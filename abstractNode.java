@@ -1,4 +1,4 @@
-public abstract class abstractNode<E> {
+public abstract class abstractNode<E> implements Node<E> {
     protected E valor;
-    protected abstractNode<E> siguiente;
+    protected Node<E> siguiente;
 }
