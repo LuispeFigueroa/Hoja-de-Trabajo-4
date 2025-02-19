@@ -1,4 +1,4 @@
-public class DoublyNode<E> {
+public class DoublyNode<E> extends abstractNode<E> {
     // Atributos
     /**
      *
