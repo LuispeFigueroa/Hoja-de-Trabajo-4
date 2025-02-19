@@ -4,11 +4,11 @@ abstract public class abstractStack<E> implements Stack<E> {
      */
     protected int count = 0;
 
-    protected abstract void push(E e);
+    public abstract void push(E e);
 
-    protected abstract E pop();
+    public abstract E pop();
 
-    protected abstract E peek();
+    public abstract E peek();
 
     @Override
     public boolean isEmpty() {

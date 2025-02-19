@@ -1,10 +1,12 @@
-public class DoublyNode<E> extends abstractNode<E> {
+public class DoublyNode<E> implements Node<E> {
     // Atributos
     /**
      *
      */
-    private DoublyNode<E> anterior;
-
+    private Node<E> anterior;
+    public Node<E> siguiente;
+    public E valor;
+    
     // Constructor
     /**
      * @param valor
@@ -21,5 +23,21 @@ public class DoublyNode<E> extends abstractNode<E> {
 
     public void setAnterior(Node<E> nodo) {
         this.anterior = nodo;
+    }
+
+    public E getValor() {
+        return this.valor;
+    }
+
+    public void setValor(E valor) {
+        this.valor = valor;
+    }
+
+    public Node<E> getSiguiente() {
+        return this.siguiente;
+    }
+
+    public void setSiguiente(Node<E> nodo) {
+        this.siguiente = nodo;
     }
 }

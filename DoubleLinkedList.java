@@ -3,19 +3,23 @@ public class DoubleLinkedList<E> extends abstractList<E> {
     private Node<E> tail;
 
     // Métodos
-    public SingleLinkedList(E valor) {
-        this.valor = valor;
+    public DoubleLinkedList() {
+        this.size = 0;
         this.head = null;
         this.tail = null;
     }
 
     @Override
     public void add(E valor) {
+        size++;
         Node<E> nuevoNodo = new DoublyNode<>(valor);
-        nuevoNode.setSiguiente(this.head);
+        nuevoNodo.setSiguiente(this.head);
         if (this.head != null) {
             this.head.setAnterior(nuevoNodo);
         }
         this.head = nuevoNodo;
+        if (size == 1) {
+            this.tail = nuevoNodo;
+        }
     }
 }
