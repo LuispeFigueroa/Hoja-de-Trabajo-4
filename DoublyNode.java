@@ -3,15 +3,7 @@ public class DoublyNode<E> extends abstractNode<E> {
     /**
      *
      */
-    private E valor;
-    /**
-     *
-     */
     private DoublyNode<E> anterior;
-    /**
-     *
-     */
-    private DoublyNode<E> siguiente;
 
     // Constructor
     /**

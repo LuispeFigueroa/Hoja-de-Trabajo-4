@@ -10,10 +10,12 @@ abstract public class abstractStack<E> implements Stack<E> {
 
     public abstract E peek();
 
+    @Override
     public boolean isEmpty() {
         return count == 0;
     }
 
+    @Override
     public int size() {
         return count;
     }
