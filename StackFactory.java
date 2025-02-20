@@ -8,7 +8,7 @@ public class StackFactory<E> {
         }
         else if (tipoStack.equals("list")) {
             return new StackList<E>(tipoLista);
-        }}
+        }
         return null;
     }
 }
