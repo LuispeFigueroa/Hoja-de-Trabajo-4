@@ -18,7 +18,7 @@ public class DoubleLinkedList<E> extends abstractList<E> {
             this.head.setAnterior(nuevoNodo);
         }
         this.head = nuevoNodo;
-        if (size == 1) {
+        if (this.size == 1) {
             this.tail = nuevoNodo;
         }
     }

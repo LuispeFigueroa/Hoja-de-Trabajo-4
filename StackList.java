@@ -4,7 +4,7 @@ public class StackList<E> extends abstractStack<E> {
 
     // Métodos
     public StackList(String tipo) {
-        ListFactory factory = new ListFactory();
+        ListFactory<E> factory = new ListFactory<E>();
         this.stack = factory.getList(tipo);
     }
 
