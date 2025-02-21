@@ -1,17 +1,54 @@
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class Calculadora implements StackArrayList {
-    private Stack<Integer> stack;
+public class Calculadora {
+    private Stack<String> stack;
 
-    public Calculadora() {
-        stack = new StackVector<>();
+    public Calculadora(String tipo) {
+        StackFactory factory = new StackFactory();
+        this.stack = factory.getStack(tipo);
     }
 
-    @Override
     public int evaluar(String operacion) {
         String postfix = convertirAPostfix(operacion);
         return evaluarPostfix(postfix);
+    }
+
+    private String convertirAPostfix(String infix) {
+        StringBuilder postfix = new StringBuilder();
+        
+        for (int i = 0; i < infix.length(); i++) {
+            char ch = infix.charAt(i);
+            
+            if (Character.isDigit(ch)) {
+                postfix.append(ch).append(' ');
+            } else if (ch == '(') {
+                this.stack.push(ch);
+            } else if (ch == ')') {
+                while (!this.stack.isEmpty() && this.stack.peek() != '(') {
+                    postfix.append(this.stack.pop()).append(' ');
+                }
+                this.stack.pop();
+            } else {
+                while (!this.stack.isEmpty() && precedence(ch) <= precedence(this.stack.peek())) {
+                    postfix.append(this.stack.pop()).append(' ');
+                }
+                this.stack.push(ch);
+            }
+        }
+        for (int i = 0; i < this.stack.size(); i++) {
+            this.stack.pop();
+        }
+        return postfix;
+    }
+
+    private static int precedence(char ch) {
+        return switch (ch) {
+            case '+', '-' -> 1;
+            case '*', '/' -> 2;
+            case '^' -> 3;
+            default -> -1;
+        };
     }
 
     private int evaluarPostfix(String operacion) {
@@ -39,7 +76,15 @@ public class Calculadora implements StackArrayList {
         return stack.pop();
     }
 
-    @Override
+    private boolean esNumero(String token) {
+        try {
+            Integer.parseInt(token);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     public int operar(int operandoA, int operandoB, String operador) {
         return switch (operador) {
             case "+" -> operandoA + operandoB;
@@ -49,58 +94,10 @@ public class Calculadora implements StackArrayList {
                 if (operandoB == 0) {
                     throw new ArithmeticException("Error: División entre cero");
                 }
-                yield operandoA / operandoB;
+                return operandoA / operandoB;
             }
+            case "^" -> (int) Math.pow(operandoA, operandoB);
             default -> throw new IllegalArgumentException("Operador no válido: " + operador);
         };
-    }
-
-    private String convertirAPostfix(String infix) {
-        Stack<Character> pila = new Stack<>();
-        StringBuilder postfix = new StringBuilder();
-        
-        for (int i = 0; i < infix.length(); i++) {
-            char ch = infix.charAt(i);
-            
-            if (Character.isDigit(ch)) {
-                postfix.append(ch).append(' ');
-            } else if (ch == '(') {
-                pila.push(ch);
-            } else if (ch == ')') {
-                while (!pila.isEmpty() && pila.peek() != '(') {
-                    postfix.append(pila.pop()).append(' ');
-                }
-                pila.pop();
-            } else {
-                while (!pila.isEmpty() && precedence(ch) <= precedence(pila.peek())) {
-                    postfix.append(pila.pop()).append(' ');
-                }
-                pila.push(ch);
-            }
-        }
-        
-        while (!pila.isEmpty()) {
-            postfix.append(pila.pop()).append(' ');
-        }
-        
-        return postfix.toString().trim();
-    }
-
-    private static int precedence(char ch) {
-        return switch (ch) {
-            case '+', '-' -> 1;
-            case '*', '/' -> 2;
-            case '^' -> 3;
-            default -> -1;
-        };
-    }
-
-    private boolean esNumero(String token) {
-        try {
-            Integer.parseInt(token);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 }

@@ -1,4 +1,8 @@
 public class StackFactory<E> {
+    public StackFactory() {
+        // Constructor para StackFactory
+    }
+
     public Stack<E> getStack(String tipoStack, String tipoLista) {
         if (tipoStack.equals("vector")) {
             return new StackVector<E>();
