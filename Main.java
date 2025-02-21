@@ -13,10 +13,10 @@ public class Main {
         if (tipoStack.equalsIgnoreCase("list")) {
             System.out.println("¿Qué tipo de lista desea usar? (simple o doble)");
             String tipoLista = scanner.nextLine();
-            calculadora = new Calculadora(tipoStack, tipoLista);
+            calculadora = Calculadora.getInstance(tipoStack, tipoLista);
         }
         else {
-            calculadora = new Calculadora(tipoStack, "N/A");
+            calculadora = Calculadora.getInstance(tipoStack, "N/A");
         }
         
         while (menu) {

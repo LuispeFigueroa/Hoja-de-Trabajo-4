@@ -1,11 +1,20 @@
 import java.util.StringTokenizer;
 
 public class Calculadora {
+    private static Calculadora instancia;
     private Stack<String> stack;
 
     public Calculadora(String tipoStack, String tipoLista) {
         StackFactory<String> factory = new StackFactory<>();
         this.stack = (Stack<String>) factory.getStack(tipoStack, tipoLista);
+    }
+
+    public static Calculadora getInstance(String tipoStack, String tipoLista) {
+        if (instancia == null) {
+            // Solo se crea una instancia la primera vez que se llama al método.
+            instancia = new Calculadora(tipoStack, tipoLista);
+        }
+        return instancia;
     }
 
     public String evaluar(String operacion) {
