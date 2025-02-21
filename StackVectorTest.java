@@ -18,5 +18,17 @@ public class StackVectorTest {
         assertEquals("B", stack.peek());
 
     }
+    @Test 
+    public void testPop() {
+        stack.push("1");
+        stack.push("2");
+        assertEquals("2", stack.pop());
+        assertEquals("1", stack.pop());
+    }
+    @Test
+    public void testPeek() {
+        stack.push("5");
+        assertEquals("5", stack.peek());
+    }
     
 }
