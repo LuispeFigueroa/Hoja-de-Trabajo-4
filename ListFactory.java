@@ -4,10 +4,10 @@ public class ListFactory<E> {
     }
 
     public List<E> getList(String tipo) {
-        if (tipo == "simple") {
+        if (tipo.equalsIgnoreCase("simple")) {
             return new SingleLinkedList<E>();
         }
-        else if (tipo == "double") {
+        else if (tipo.equalsIgnoreCase("double")) {
             return new DoubleLinkedList<E>();          
         }
         return null;

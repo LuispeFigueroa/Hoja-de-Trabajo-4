@@ -4,13 +4,13 @@ public class StackFactory<E> {
     }
 
     public Stack<E> getStack(String tipoStack, String tipoLista) {
-        if (tipoStack.equals("vector")) {
+        if (tipoStack.equalsIgnoreCase("vector")) {
             return new StackVector<E>();
         }
-        else if (tipoStack.equals("arraylist")) {
+        else if (tipoStack.equalsIgnoreCase("arraylist")) {
             return new StackArrayList<E>();
         }
-        else if (tipoStack.equals("list")) {
+        else if (tipoStack.equalsIgnoreCase("list")) {
             return new StackList<E>(tipoLista);
         }
         return null;
