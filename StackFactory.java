@@ -1,8 +1,16 @@
 public class StackFactory<E> {
+    /**
+     * 
+     */
     public StackFactory() {
         // Constructor para StackFactory
     }
 
+    /**
+     * @param tipoStack
+     * @param tipoLista
+     * @return
+     */
     public Stack<E> getStack(String tipoStack, String tipoLista) {
         if (tipoStack.equalsIgnoreCase("vector")) {
             return new StackVector<E>();

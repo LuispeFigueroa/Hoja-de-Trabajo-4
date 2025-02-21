@@ -4,7 +4,13 @@ public class DoublyNode<E> implements Node<E> {
      *
      */
     private Node<E> anterior;
+    /**
+     *
+     */
     public Node<E> siguiente;
+    /**
+     *
+     */
     public E valor;
     
     // Constructor
@@ -17,26 +23,32 @@ public class DoublyNode<E> implements Node<E> {
         this.siguiente = null;
     }
 
+    @Override
     public Node<E> getAnterior() {
         return this.anterior;
     }
 
+    @Override
     public void setAnterior(Node<E> nodo) {
         this.anterior = nodo;
     }
 
+    @Override
     public E getValor() {
         return this.valor;
     }
 
+    @Override
     public void setValor(E valor) {
         this.valor = valor;
     }
 
+    @Override
     public Node<E> getSiguiente() {
         return this.siguiente;
     }
 
+    @Override
     public void setSiguiente(Node<E> nodo) {
         this.siguiente = nodo;
     }

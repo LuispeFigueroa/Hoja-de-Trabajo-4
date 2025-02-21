@@ -2,9 +2,15 @@ import java.util.ArrayList;
 
 public class StackArrayList<E> extends abstractStack<E> {
     // Atributos
+    /**
+     *
+     */
     private ArrayList<E> stack;
 
     // Métodos
+    /**
+     * 
+     */
     public StackArrayList() {
         this.stack = new ArrayList<E>();
     }

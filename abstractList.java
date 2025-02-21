@@ -1,5 +1,11 @@
 public abstract class abstractList<E> implements List<E> {
+    /**
+     *
+     */
     protected Node<E> head;
+    /**
+     *
+     */
     protected int size;
 
     @Override

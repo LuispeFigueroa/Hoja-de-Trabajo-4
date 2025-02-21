@@ -1,5 +1,8 @@
 public class SingleLinkedList<E> extends abstractList<E> {
     // Métodos
+    /**
+     * 
+     */
     public SingleLinkedList() {
         this.size = 0;
         this.head = null;

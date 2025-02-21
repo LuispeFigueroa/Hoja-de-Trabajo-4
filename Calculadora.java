@@ -1,14 +1,29 @@
 import java.util.StringTokenizer;
 
 public class Calculadora {
+    /**
+     *
+     */
     private static Calculadora instancia;
+    /**
+     *
+     */
     private Stack<String> stack;
 
+    /**
+     * @param tipoStack
+     * @param tipoLista
+     */
     public Calculadora(String tipoStack, String tipoLista) {
         StackFactory<String> factory = new StackFactory<>();
         this.stack = (Stack<String>) factory.getStack(tipoStack, tipoLista);
     }
 
+    /**
+     * @param tipoStack
+     * @param tipoLista
+     * @return
+     */
     public static Calculadora getInstance(String tipoStack, String tipoLista) {
         if (instancia == null) {
             // Solo se crea una instancia la primera vez que se llama al método.
@@ -17,11 +32,19 @@ public class Calculadora {
         return instancia;
     }
 
+    /**
+     * @param operacion
+     * @return
+     */
     public String evaluar(String operacion) {
         String postfix = convertirAPostfix(operacion);
         return evaluarPostfix(postfix);
     }
 
+    /**
+     * @param infix
+     * @return
+     */
     private String convertirAPostfix(String infix) {
         StringBuilder postfix = new StringBuilder();
         
@@ -53,6 +76,10 @@ public class Calculadora {
         return postfix.toString();
     }
 
+    /**
+     * @param ch
+     * @return
+     */
     private static int precedence(String ch) {
         char c = ch.charAt(0);
         return switch (c) {
@@ -63,6 +90,10 @@ public class Calculadora {
         };
     }
 
+    /**
+     * @param operacion
+     * @return
+     */
     private String evaluarPostfix(String operacion) {
         StringTokenizer tokens = new StringTokenizer(operacion);
         
@@ -88,6 +119,10 @@ public class Calculadora {
         return stack.pop();
     }
 
+    /**
+     * @param token
+     * @return
+     */
     private boolean esNumero(String token) {
         try {
             Integer.parseInt(token);
@@ -97,6 +132,12 @@ public class Calculadora {
         }
     }
 
+    /**
+     * @param operandoA
+     * @param operandoB
+     * @param operador
+     * @return
+     */
     public int operar(int operandoA, int operandoB, String operador) {
         return switch (operador) {
             case "+" -> operandoA + operandoB;

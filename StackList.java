@@ -1,8 +1,14 @@
 public class StackList<E> extends abstractStack<E> {
     // Atributos
+    /**
+     *
+     */
     private List<E> stack;
 
     // Métodos
+    /**
+     * @param tipo
+     */
     public StackList(String tipo) {
         ListFactory<E> factory = new ListFactory<E>();
         this.stack = factory.getList(tipo);

@@ -1,8 +1,14 @@
 public class DoubleLinkedList<E> extends abstractList<E> {
     // Atributos
+    /**
+     *
+     */
     private Node<E> tail;
 
     // Métodos
+    /**
+     * 
+     */
     public DoubleLinkedList() {
         this.size = 0;
         this.head = null;
