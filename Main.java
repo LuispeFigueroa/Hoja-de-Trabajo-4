@@ -6,16 +6,17 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean menu = true;
+        Calculadora calculadora = null;
 
         System.out.println("¿Cómo quiere implementar el stack de la calculadora? (vector, arraylist o list)");
         String tipoStack = scanner.nextLine();
         if (tipoStack.equalsIgnoreCase("list")) {
             System.out.println("¿Qué tipo de lista desea usar? (simple o doble)");
             String tipoLista = scanner.nextLine();
-            Calculadora calculadora = new Calculadora(tipoStack, tipoLista);
+            calculadora = new Calculadora(tipoStack, tipoLista);
         }
         else {
-            Calculadora calculadora = new Calculadora(tipoStack, "N/A");
+            calculadora = new Calculadora(tipoStack, "N/A");
         }
         
         while (menu) {
@@ -32,7 +33,7 @@ public class Main {
                     try (BufferedReader br = new BufferedReader(new FileReader("datos.txt"))) {
                         String linea;
                         while ((linea = br.readLine()) != null) {
-                            int resultado = calculadora.evaluar(linea);
+                            String resultado = calculadora.evaluar(linea);
                             System.out.println("Resultado: " + resultado);
                         }
                     } catch (Exception e) {

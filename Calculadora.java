@@ -1,15 +1,14 @@
-import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Calculadora {
     private Stack<String> stack;
 
-    public Calculadora(String tipo) {
-        StackFactory factory = new StackFactory();
-        this.stack = factory.getStack(tipo);
+    public Calculadora(String tipoStack, String tipoLista) {
+        StackFactory<String> factory = new StackFactory<>();
+        this.stack = (Stack<String>) factory.getStack(tipoStack, tipoLista);
     }
 
-    public int evaluar(String operacion) {
+    public String evaluar(String operacion) {
         String postfix = convertirAPostfix(operacion);
         return evaluarPostfix(postfix);
     }
@@ -18,32 +17,36 @@ public class Calculadora {
         StringBuilder postfix = new StringBuilder();
         
         for (int i = 0; i < infix.length(); i++) {
-            char ch = infix.charAt(i);
+            char character = infix.charAt(i);
+            String ch = String.valueOf(character);
             
-            if (Character.isDigit(ch)) {
+            if (Character.isDigit(character)) {
                 postfix.append(ch).append(' ');
-            } else if (ch == '(') {
+            } else if (ch.equals("(")) {
                 this.stack.push(ch);
-            } else if (ch == ')') {
-                while (!this.stack.isEmpty() && this.stack.peek() != '(') {
+            } else if (ch.equals(")")) {
+                while (!this.stack.isEmpty() && !this.stack.peek().equals("(")) {
                     postfix.append(this.stack.pop()).append(' ');
                 }
                 this.stack.pop();
             } else {
-                while (!this.stack.isEmpty() && precedence(ch) <= precedence(this.stack.peek())) {
-                    postfix.append(this.stack.pop()).append(' ');
+                if (!ch.equals(" ")) {
+                    while (!this.stack.isEmpty() && precedence(ch) <= precedence(this.stack.peek())) {
+                        postfix.append(this.stack.pop()).append(' ');
+                    }
+                    this.stack.push(ch);
                 }
-                this.stack.push(ch);
             }
         }
         for (int i = 0; i < this.stack.size(); i++) {
-            this.stack.pop();
+            postfix.append(this.stack.pop());
         }
-        return postfix;
+        return postfix.toString();
     }
 
-    private static int precedence(char ch) {
-        return switch (ch) {
+    private static int precedence(String ch) {
+        char c = ch.charAt(0);
+        return switch (c) {
             case '+', '-' -> 1;
             case '*', '/' -> 2;
             case '^' -> 3;
@@ -51,22 +54,22 @@ public class Calculadora {
         };
     }
 
-    private int evaluarPostfix(String operacion) {
+    private String evaluarPostfix(String operacion) {
         StringTokenizer tokens = new StringTokenizer(operacion);
         
         while (tokens.hasMoreTokens()) {
             String token = tokens.nextToken();
             
             if (esNumero(token)) {
-                stack.push(Integer.parseInt(token));
+                stack.push(token);
             } else {
                 if (stack.size() < 2) {
                     throw new IllegalArgumentException("Expresión inválida: no hay suficientes operandos para el operador '" + token + "'");
                 }
-                int b = stack.pop();
-                int a = stack.pop();
+                int b = Integer.parseInt(stack.pop());
+                int a = Integer.parseInt(stack.pop());
                 
-                stack.push(operar(a, b, token));
+                stack.push(String.valueOf(operar(a, b, token)));
             }
         }
         
@@ -94,7 +97,7 @@ public class Calculadora {
                 if (operandoB == 0) {
                     throw new ArithmeticException("Error: División entre cero");
                 }
-                return operandoA / operandoB;
+                yield operandoA / operandoB;
             }
             case "^" -> (int) Math.pow(operandoA, operandoB);
             default -> throw new IllegalArgumentException("Operador no válido: " + operador);

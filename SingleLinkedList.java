@@ -10,5 +10,6 @@ public class SingleLinkedList<E> extends abstractList<E> {
         Node<E> nuevoNodo = new SinglyNode<E>(valor);
         nuevoNodo.setSiguiente(this.head);
         this.head = nuevoNodo;
+        this.size++;
     }
 }

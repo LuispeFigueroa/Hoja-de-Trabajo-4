@@ -7,7 +7,7 @@ public class ListFactory<E> {
         if (tipo.equalsIgnoreCase("simple")) {
             return new SingleLinkedList<E>();
         }
-        else if (tipo.equalsIgnoreCase("double")) {
+        else if (tipo.equalsIgnoreCase("doble")) {
             return new DoubleLinkedList<E>();          
         }
         return null;
