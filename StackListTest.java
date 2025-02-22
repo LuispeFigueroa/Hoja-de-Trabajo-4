@@ -12,7 +12,7 @@ public class StackListTest {
     } 
 
     @Test
-    public void testPush() {
+    public void testPushyPop() {
         stack.push("4");
         stack.push("8");
         assertEquals("8", stack.pop());
