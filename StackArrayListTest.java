@@ -6,6 +6,9 @@ public class StackArrayListTest {
     private StackArrayList<Integer> stack;
 
 
+    /**
+     * 
+     */
     @Before
     public void setUp(){
 
@@ -25,12 +28,18 @@ public class StackArrayListTest {
         assertEquals(15, (int) stack.pop());
     }
 
+    /**
+     * 
+     */
     @Test
     public void testPeek(){
         stack.push(7);
         assertEquals(7, (int) stack.peek()); // debe regresar el ultimo elemento pusheado
     }
 
+    /**
+     * 
+     */
     @Test
     public void testIsEmpty(){
         assertTrue(stack.isEmpty()); // True, porque no deberia tener elementos
