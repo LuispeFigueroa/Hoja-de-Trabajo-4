@@ -16,7 +16,7 @@ public interface List<E> {
     /**
      * @return
      */
-    E getHead();
+    E getTail();
     //pre: lista no esta vacía
     //post: se devuelve el valor del último nodo
 }

@@ -1,6 +1,5 @@
 import org.junit.*;
 import  static org.junit.Assert.*;
-import java.util.Stack;
 
 public class DoubleLinkedListTest {
 
@@ -18,7 +17,7 @@ public class DoubleLinkedListTest {
     public void testAddyGetHead() {
         list.add("4");
         list.add("8");
-        assertEquals("8", list.getHead());
+        assertEquals("8", list.getTail());
     }
     
     @Test
@@ -26,7 +25,7 @@ public class DoubleLinkedListTest {
         list.add("7");
         list.add("9");
         assertEquals("9", list.remove());
-        assertEquals("7", list.getHead());
+        assertEquals("7", list.getTail());
     }
 
 }

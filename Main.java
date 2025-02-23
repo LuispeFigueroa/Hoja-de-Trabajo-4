@@ -51,6 +51,7 @@ public class Main {
                     System.out.println("Opción inválida. Intente de nuevo.");
                     break;
             }
-        }        
+        }
+        scanner.close();        
     }
 }

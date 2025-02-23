@@ -34,6 +34,6 @@ public class StackList<E> extends abstractStack<E> {
         if (this.isEmpty()) {
             throw new IllegalStateException("Stack vacío");
         }
-        return this.stack.getHead();
+        return this.stack.getTail();
     }
 }
